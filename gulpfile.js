@@ -1,12 +1,12 @@
 const { src, dest, watch, parallel, series } = require('gulp');
 
-const scss = require('gulp-sass');
-const concat = require('gulp-concat');
-const autoprefixer = require('gulp-autoprefixer');
-const uglify = require('gulp-uglify');
-const browserSync = require('browser-sync').create();
-const del = require('del');
-const imagemin = require('gulp-imagemin');
+const scss          = require('gulp-sass');
+const concat        = require('gulp-concat');
+const autoprefixer  = require('gulp-autoprefixer');
+const uglify        = require('gulp-uglify-es').default;
+const browserSync   = require('browser-sync').create();
+const del           = require('del');
+const imagemin      = require('gulp-imagemin');
 
 
 function browsersync() {
@@ -14,7 +14,8 @@ function browsersync() {
     server: {
       baseDir: 'app/'
     },
-    notify: false
+    notify: false,
+    browser: 'firefox'
   })
 }
 
@@ -34,6 +35,8 @@ function scripts() {
   return src([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/slick-carousel/slick/slick.js',
+    'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',
+    'node_modules/rateyo/src/jquery.rateyo.js',
     'app/js/main.js'
   ])
     .pipe(concat('main.min.js'))
@@ -76,13 +79,12 @@ function watching() {
   watch(['app/**/*.html']).on('change', browserSync.reload);
 }
 
-exports.styles = styles;
-exports.scripts = scripts;
-exports.browsersync = browsersync;
-exports.watching = watching;
-exports.images = images;
-exports.deleteDist = deleteDist;
+exports.styles        = styles;
+exports.scripts       = scripts;
+exports.browsersync   = browsersync;
+exports.watching      = watching;
+exports.images        = images;
+exports.deleteDist    = deleteDist;
 
-exports.build = series(deleteDist, images, build);
-
-exports.default = parallel(styles, scripts, browsersync, watching);
+exports.build         = series(deleteDist, images, build);
+exports.default       = parallel(styles, scripts, browsersync, watching);
