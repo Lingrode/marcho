@@ -785,6 +785,20 @@
     margin-top: 12px;
     color: $accent;
   }
+  &__text {
+    margin-bottom: 25px;
+  }
+  &__terms {
+    color: #909090;
+    display: inline-block;
+    margin-top: 12px;
+  }
+  &__terms-link {
+    text-decoration: underline;
+    &:hover {
+      color: $accent;
+    }
+  }
 }
 
 @import "media";
