@@ -46,3 +46,25 @@
     margin-top: 55px;
   }
 }
+
+@media (max-width: 620px) {
+  .promo {
+    padding: 60px 0;
+    &__clock {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    &__clock-item {
+      margin: 20px 33px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .promo {
+    padding: 60px 0;
+    &__clock-item {
+      margin: 8px;
+    }
+  }
+}

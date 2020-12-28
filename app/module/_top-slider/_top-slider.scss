@@ -1,7 +1,8 @@
 .top-slider {
   background-image: url("../images/decor/top-slider-bg.png");
   background-repeat: no-repeat;
-  background-position: center;
+  // background-position: center;
+  background-size: cover;
   background-color: $bg;
   padding: 65px 0 29px;
   &__container {
@@ -67,6 +68,61 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .top-slider {
+    &__img {
+      width: 40%;
+      object-fit: contain;
+    }
+    &__content {
+      padding-top: 40px;
+      padding-left: 15px;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .top-slider {
+    &__item {
+      .top-slider__img {
+        display: none;
+      }
+    }
+    .slick-dots {
+      margin-top: 0;
+    }
+    &__content {
+      padding-top: 0;
+      padding-bottom: 50px;
+    }
+  }
+}
+
+@media (max-width: 620px) {
+  .top-slider {
+    padding: 45px 0 30px;
+    &__title {
+      font-size: 44px;
+      line-height: 52px;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .top-slider {
+    padding: 45px 0 30px;
+    &__title {
+      font-size: 38px;
+      line-height: 48px;
+      margin-bottom: 20px;
+    }
+    &__text {
+      margin-bottom: 30px;
     }
   }
 }
